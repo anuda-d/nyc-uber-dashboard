@@ -1,0 +1,6 @@
+REQUIREMENTS TO RUN:
+
+streamlit
+pandas
+sqlalchemy
+psycopg2-binary
