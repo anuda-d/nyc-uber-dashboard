@@ -7,7 +7,7 @@ import os
 # ----------------------------
 # DB Connection
 # ----------------------------
-DDB_URL = os.getenv("DATABASE_URL")
+DB_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(
     DB_URL,
