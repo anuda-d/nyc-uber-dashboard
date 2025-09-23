@@ -176,6 +176,32 @@ elif page == "Geography":
     )
     st.plotly_chart(fig_dropoffs, use_container_width=True)
 
+    # Map: Pickup revenue heatmap
+    st.subheader("🗺️ Revenue by Pickup Zone (Map)")
+
+    # Join pickup_summary with taxi_zones to get lat/lon
+    pickup_geo = pickup_summary.merge(
+        load_table("taxi_zones")[["LocationID", "Zone", "lat", "lon"]],
+        left_on="pickup_zone",
+        right_on="Zone",
+        how="left"
+    )
+
+    # Create map layer
+    import pydeck as pdk
+    pickup_layer = pdk.Layer(
+        "ScatterplotLayer",
+        data=pickup_geo,
+        get_position="[lon, lat]",
+        get_radius="revenue / 100",  # Scale bubbles by revenue
+        get_fill_color="[255, 140, 0, 160]",  # orange bubbles
+        pickable=True,
+    )
+
+    view_state = pdk.ViewState(latitude=40.7128, longitude=-74.0060, zoom=10)
+
+    st.pydeck_chart(pdk.Deck(layers=[pickup_layer], initial_view_state=view_state, tooltip={"text": "{pickup_zone}\nRevenue: ${revenue}"}))
+
 # ----------------------------------------------------------------------------
 # PAGE 5: OUTLIERS
 # ----------------------------------------------------------------------------
