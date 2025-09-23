@@ -2,10 +2,15 @@ import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
 
+import os
+
 # ----------------------------
 # DB Connection
 # ----------------------------
-DB_URL = os.environ["DATABASE_URL"]
+DB_URL = os.getenv("DATABASE_URL")
+if not DB_URL:
+    DB_URL = "postgresql+psycopg2://postgres:Mmayy18_2004@db.ousmcrvvwjztppalmyzh.supabase.co:5432/postgres?sslmode=require"
+
 engine = create_engine(DB_URL)
 
 # ----------------------------
