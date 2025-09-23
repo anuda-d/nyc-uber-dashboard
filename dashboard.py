@@ -1,22 +1,15 @@
 import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
-
 import os
 
 # ----------------------------
 # DB Connection
 # ----------------------------
-DB_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(
-    DB_URL,
-    connect_args={
-        "sslmode": "require",
-        "application_name": "streamlit",
-        "options": "-c inet_client_addr=0.0.0.0"
-    }
-)
+DB_URL = os.getenv("DATABASE_URL")
+engine = create_engine(DB_URL)
+
 # ----------------------------
 # Page Config
 # ----------------------------
