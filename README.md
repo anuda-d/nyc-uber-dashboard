@@ -42,7 +42,7 @@ An interactive analytics dashboard built with **Python** and **Streamlit** to un
 This project uses the **NYC Taxi & Limousine Commission (TLC) Trip Record Data**, publicly available here:  
 [NYC TLC Trip Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)  
 
-Due to file size constraints, only a **sample dataset** (`data/sample_uber_data.csv`) is included in this repository. For full analysis, download the trip data directly from the TLC website.  
+Due to file size constraints, only a **sample dataset** (`sample_uber_data.csv`) is included in this repository. For full analysis, download the trip data directly from the TLC website.  
 
 ---
 
